@@ -4,20 +4,13 @@
 
 
 window.findNRooksSolution = function(n){
+  if(n===0) {
+    return 0;
+  }
   rookSolutions = [];
-
-  permuter(_.range(n),[]);
-
+  rookSolutionGenerator(_.range(n),[]);
   return rookSolutions[0];
 };
-
-// window.findNRooksSolution = function(n){
-//   result = [];
-//   var solutions = recurse(makeBoard(n));
-
-//   return result[0];
-// };
-
 
 window.countNRooksSolutions = function(n){
   var solutionCount = 1;
@@ -31,20 +24,40 @@ window.countNRooksSolutions = function(n){
 };
 
 window.findNQueensSolution = function(n) {
-  queenSolutions = [];
-  makeQueenBoards(_.range(n),[]);
+  qCount = 0;
+  qSolutions = [];
+  majDiHash = {};
+  minDiHash = {};
 
-  console.log("Queen solution for " , n , queenSolutions[0]);
-  
-  return queenSolutions[0] || makeEmptyBoard(n);
+  queenSolutionGenerator(_.range(n),[]);
+
+  if(qSolutions[0]) {
+    //console.log("Queen solution for " +n+ " " + qSolutions[0]);
+    return qSolutions[0];
+  } else {
+    console.log("No n-Queens solution available for an " +n+ "x" +n+ " board.");
+    return makeEmptyBoard(n);
+  }
 };
 
 window.countNQueensSolutions = function(n){
-  queenSolutions = [];
-  makeQueenBoards(_.range(n),[]);
+  qCount = 0;
+  qSolutions = [];
+  majDiHash = {};
+  minDiHash = {};
 
-  console.log('Number of solutions for ' + n + ' queens:' , queenSolutions.length);
-  return queenSolutions.length || 0;
+  range = _.range(n);
+
+  var timeBefore = new Date();      // counters
+
+  queenCounter(_.range(n),n);       // actual function
+
+  var timeAfter = new Date();
+  var timeElapsed = timeAfter - timeBefore;
+
+  console.log('Number of solutions for ' + n + '-Queens:' + qCount);
+  console.log(timeElapsed + " ms");
+  return qCount;
 };
 
 

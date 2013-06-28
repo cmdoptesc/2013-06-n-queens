@@ -1,28 +1,28 @@
 describe("solvers", function() {
   window.displayBoard = function(){};
 
-  // describe('findNRooksSolution()', function(){
+  describe('findNRooksSolution()', function(){
 
-  //   it('finds a valid solution for n of 0-8', function(){
-  //     _.range(0, 8).map(function(n){
-  //       var solutionBoard = new Board(findNRooksSolution(n));
-  //       expect(solutionBoard.hasAnyRooksConflicts()).toEqual(false);
-  //     });
-  //   });
+    it('finds a valid solution for n of 0-8', function(){
+      _.range(0, 8).map(function(n){
+        var solutionBoard = new Board(findNRooksSolution(n));
+        expect(solutionBoard.hasAnyRooksConflicts()).toEqual(false);
+      });
+    });
 
-  // });
+  });
 
-  // describe('countNRooksSolutions()', function(){
+  describe('countNRooksSolutions()', function(){
 
-  //   it('finds the number of valid solutions for n of 0-8', function(){
-  //     _.range(0, 8).map(function(n){
-  //       var solutionCount = countNRooksSolutions(n);
-  //       var expectedSolutionCount = [1, 1, 2, 6, 24, 120, 720, 5040][n];
-  //       expect(solutionCount).toEqual(expectedSolutionCount);
-  //     });
-  //   });
+    it('finds the number of valid solutions for n of 0-8', function(){
+      _.range(0, 8).map(function(n){
+        var solutionCount = countNRooksSolutions(n);
+        var expectedSolutionCount = [1, 1, 2, 6, 24, 120, 720, 5040][n];
+        expect(solutionCount).toEqual(expectedSolutionCount);
+      });
+    });
 
-  // });
+  });
 
   describe('findNQueensSolution()', function(){
 
